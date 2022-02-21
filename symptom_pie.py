@@ -6,7 +6,7 @@ import plotly.express as px
 from dash import Dash, html, dcc
 
 #INITIAL DATA INGESTION AND SETUP
-weekSpan = 4
+weekSpan = 52
 end = datetime.datetime.today().replace(hour=23,minute=59,second=59)
 begin = (end - datetime.timedelta(days=7*(weekSpan-1)) - datetime.timedelta(days=end.weekday())).replace(hour=0, minute=0, second=0)
 end = end.strftime("%Y-%m-%d %H:%M:%S")
