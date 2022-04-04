@@ -3,6 +3,8 @@ import requests
 import datetime
 import plotly.figure_factory as ff
 from dash import Dash, dcc, html, Input, Output
+app = Dash(__name__)
+server = app.server
 
 def data_generator(weekSpan, work_segment=False, production_issue=False):
        if work_segment==True and production_issue==True:
@@ -72,8 +74,7 @@ def organizer(weekSpan):
 
 result = organizer(4)
 options = list(result['Alias'])
-app = Dash(__name__)
-server = app.server
+
 app.layout = html.Div([
        html.Div([
               html.H1(['Time Line View of EOL and FQC Operations']),
@@ -106,4 +107,4 @@ def update_figure(selected_products):
        fig = ff.create_gantt(fil_result, index_col = 'Resource', colors=colors, title=None, showgrid_x=True, group_tasks=True, show_colorbar=True)
        return fig
 if __name__ == '__main__':
-       app.run_server(host='0.0.0.0', debug=False)
+       app.run_server(debug=True)
