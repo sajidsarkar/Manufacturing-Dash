@@ -73,6 +73,7 @@ def organizer(weekSpan):
 result = organizer(4)
 options = list(result['Alias'])
 app = Dash(__name__)
+server = app.server
 app.layout = html.Div([
        html.Div([
               html.H1(['Time Line View of EOL and FQC Operations']),
