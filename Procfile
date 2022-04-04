@@ -1,0 +1,1 @@
+web: gunicorn machine_progress:server
