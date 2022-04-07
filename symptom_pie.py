@@ -1,8 +1,9 @@
 import pandas as pd
 import requests
 import datetime
+import numpy as np
 import plotly.express as px
-
+from dash import Dash, html, dcc
 
 #INITIAL DATA INGESTION AND SETUP
 weekSpan = 52
@@ -15,7 +16,7 @@ key_PI = 'APIKEY xyZH9jV6G6GPP0vxraXnX7I9Sz/NSuoH8wm8ARZ/DnU='
 headers_PI = {'Authorization': key_PI}
 r_PI = requests.get(url_PI, headers = headers_PI)
 df = pd.DataFrame(r_PI.json())
-df['Issue Created At'] = pd.to_datetime(df['Issue Created At'])
+df.loc[:,'Issue Created At'] = pd.to_datetime(df['Issue Created At'])
 
 df_symptom = df.loc[~df['Symptom Type'].isin(['Assembly Issue', 'Part Shortage', 'Part Shortage Escalation']), :]
 df_symptom = df_symptom[['Issue Created At', 'Symptom Type','Line']].sort_values('Issue Created At')

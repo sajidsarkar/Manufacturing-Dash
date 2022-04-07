@@ -2,12 +2,12 @@ import pandas as pd
 import requests
 import datetime
 import plotly.express as px
-import dash
-from dash import dcc
-import dash_core_components as dcc
-import dash_html_components as html
-from dash.dependencies import Input, Output, State
+from dash import Dash, dcc, html, Input, Output
 import plotly.figure_factory as ff
+
+external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+app = Dash(__name__, external_stylesheets=external_stylesheets)
+server = app.server
 
 #DATA CAPTURE FOR SYMPTOMS
 weekSpan = 52
@@ -17,7 +17,7 @@ end = end.strftime("%Y-%m-%d %H:%M:%S")
 begin = begin.strftime("%Y-%m-%d %H:%M:%S")
 url_PI = "https://nilfisk.visualfactory.net:443/api/public/pipelines/BPK EOL FQC Prod Issues?Lots completed after:=" + begin + "&Lots completed before:=" + end
 key_PI = 'APIKEY xyZH9jV6G6GPP0vxraXnX7I9Sz/NSuoH8wm8ARZ/DnU='
-QQheaders_PI = {'Authorization': key_PI}
+headers_PI = {'Authorization': key_PI}
 r_PI = requests.get(url_PI, headers = headers_PI)
 df = pd.DataFrame(r_PI.json())
 df['Issue Created At'] = pd.to_datetime(df['Issue Created At'])
@@ -93,8 +93,7 @@ def organizer(weekSpan):
 result = organizer(4)
 options = list(result['Alias'])
 
-external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+
 app.layout = html.Div([
     html.H1("Nilfisk-Brooklyn Park Manufacturing Quality Analytics Dashboard", style={"textAlign": "center"}),
     html.Hr(),
