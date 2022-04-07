@@ -1,1 +1,1 @@
-web: gunicorn machine_progress:server
+web: gunicorn manufacturing-dash:server
