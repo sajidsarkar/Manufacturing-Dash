@@ -14,3 +14,5 @@ Below is a brief description of how it was achieved.
 **Main Achievement:** The manufacturing team was missing a medium where it can view all critical production metrics agglomerated in a one spot. The lack of such a medium discouraged stakeholders to make data driven decisions. Therefore, deployment of this dashboard was an effective solution to that problem.
 
 **Future Work:** This is just the tip of an iceberg. My intention is to continue modifying this dashboard based on the feedback I receive from manufacturing team. Also, I intend to add more metrics, categorize them into different group, and add a sidebar for navigating the metric groups. A challenge will be to optimize data capture from API and computation with growing number of contents or metrics, as too much computation (especially transfer of data) will slow down the web application.
+
+Dashboard Link: [https://sajidsarkar-test.herokuapp.com](https://sajidsarkar-test.herokuapp.com)
